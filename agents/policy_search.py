@@ -19,6 +19,7 @@ class PolicySearch_Agent():
         self.best_w = None
         self.best_score = -np.inf
         self.noise_scale = 0.1
+        self.best_total_reward = -np.inf
 
         # Episode variables
         self.reset_episode()
@@ -45,7 +46,9 @@ class PolicySearch_Agent():
 
     def learn(self):
         # Learn by random policy search, using a reward-based score
-        self.score = self.total_reward / float(self.count) if self.count else 0.0
+        if self.total_reward and self.total_reward > self.best_total_reward:
+            self.best_total_reward = self.total_reward
+        self.score = self.total_reward / float(self.count) if self.count else -np.inf
         if self.score > self.best_score:
             self.best_score = self.score
             self.best_w = self.w

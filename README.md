@@ -16,8 +16,9 @@ cd RL-Quadcopter-2
 2. Create and activate a new environment.
 
 ```
-conda create -n quadcop python=3.6 matplotlib numpy pandas
+conda create -n quadcop python=3.6
 source activate quadcop
+pip install -r requirements.txt
 ```
 
 3. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `quadcop` environment. 
